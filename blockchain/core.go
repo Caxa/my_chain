@@ -26,7 +26,6 @@ func AddTransaction(tx Transaction) error {
 	}
 
 	NonceMap[tx.From]++
-
 	PendingTransactions = append(PendingTransactions, tx)
 	return nil
 }
@@ -46,7 +45,6 @@ func MineBlock() Block {
 	}
 
 	for {
-
 		newBlock.Hash = utils.CalculateHash(
 			newBlock.Index,
 			newBlock.Timestamp,
@@ -67,10 +65,10 @@ func MineBlock() Block {
 	}
 
 	PendingTransactions = []Transaction{}
-
 	Blockchain = append(Blockchain, newBlock)
 	return newBlock
 }
+
 func InitBlockchain() {
 	genesis := CreateGenesisBlock()
 	Blockchain = append(Blockchain, genesis)
